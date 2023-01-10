@@ -2,6 +2,7 @@ const express = require("express")
 const AlmasHotel = express();
 const mongoose = require("mongoose")
 const Bookingroute = require("./api/routes/booking")
+const userRoutes = require("./api/routes/UserRoutes")
 const cors = require("cors");
 require("dotenv").config()
 
@@ -16,6 +17,7 @@ AlmasHotel.use(express.json());
 AlmasHotel.use(express.urlencoded({extended:true}))
 AlmasHotel.use(cors({origin:true}));
 AlmasHotel.use("/booking",Bookingroute)
+AlmasHotel.use('/api/auth', userRoutes)
 AlmasHotel.listen(PORT, ()=>{
     console.log(`Your Server is running on ${PORT}`)
 })
